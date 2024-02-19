@@ -1,0 +1,76 @@
+
+### INSERT DATA WITHOUT UUID & WILL AUTOMATICALLY GENERATE THE UUID IN DB
+POST http://localhost:42047/odata/v4/catalog/Books
+Content-Type: application/json
+
+{
+    "title": "The Alchemist",
+    "stock": 1,
+    "authorID":123
+}
+
+
+
+
+### INSERT AUTHOR DETAILS
+POST http://localhost:42047/odata/v4/catalog/author
+Content-Type: application/json
+
+{
+    "authorID": 123,
+    "authorName": "Paulo Coelho",
+    "totalBooks":123
+}
+
+
+
+
+### GET ALL BOOKs DATA
+Get http://localhost:42047/odata/v4/catalog/Books
+
+
+
+
+
+###GET ALL AUTHOR DATA
+Get http://localhost:42047/odata/v4/catalog/author
+
+
+
+
+
+### EXPAND BOOKS WITH ASSOCIATION FROM "ENTITY"
+Get http://localhost:42047/odata/v4/catalog/Books?$expand=authorDetails
+
+
+
+
+
+
+### EXPAND BOOKS "WITH" ASSOCIATION FROM OTHER "ENTITY_SET"
+Get http://localhost:42047/odata/v4/catalog/BooksWithAuthor?$expand=authorDet
+
+
+
+
+
+
+### EXPAND BOOKS "WITHOUT" ASSOCIATION FROM OTHER ENTITY_SET
+Get http://localhost:42047/odata/v4/catalog/BooksWithAuthor?$expand=authorDet
+
+
+
+
+
+
+### GET DATA USING UUID
+Get http://localhost:42047/odata/v4/catalog/Books?$filter=bookID eq 5cf8a186-c8cd-4bd8-b9de-4fdb1f828da6
+
+
+
+
+
+
+
+### DELETE DATA USING UUID
+DELETE http://localhost:42047/odata/v4/catalog/Books(bookID=aa8b0f16-924f-40c7-80a4-d43bd1fba14f,title='The Alchemist')
